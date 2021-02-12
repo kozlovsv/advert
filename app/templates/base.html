@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} | Linosoft{% else %}Поиск биллбордов на видео | Linosoft{% endif %}
+{% endblock %}
+
+{% block styles %}
+    <!-- Icon -->
+    <link rel="icon" href="{{url_for('.static', filename='favicon.ico')}}" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{url_for('.static', filename='MDB-Free/css/bootstrap.min.css')}}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{{url_for('.static', filename='MDB-Free/css/mdb.min.css')}}">
+{% endblock %}
+
+{% block scripts %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="{{url_for('.static', filename='MDB-Free/js/jquery.min.js')}}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{url_for('.static', filename='MDB-Free/js/popper.min.js')}}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{url_for('.static', filename='MDB-Free/js/bootstrap.min.js')}}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{url_for('.static', filename='MDB-Free/js/mdb.min.js')}}"></script>
+{% endblock %}
+
+{% block navbar %}
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# содержимое приложения которое должно быть предоставлено в блоке app_content #}
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}

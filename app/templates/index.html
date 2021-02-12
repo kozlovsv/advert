@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div >
+        &nbsp; 
+    </div>        
+    <!-- Default form login -->
+    <form class="text-center border border-light p-5 needs-validation{% if form.errors %} was-validated{% endif %}" method="POST" enctype="multipart/form-data">
+        <div style="margin-bottom: 20px">
+            <img style="max-width: 300px" class="img-fluid" src="{{url_for('.static', filename='logo-dark.svg')}}" alt="Линософт">
+        </div>       
+        {{ form.hidden_tag() }}
+        <div class="custom-file">
+            {{ form.video(class="custom-file-input", id="customFileLang", lang="ru")}}
+            {{ form.video.label(class="custom-file-label")}}
+            {% for error in form.video.errors %}
+            <div class="invalid-feedback" style="margin-bottom: 40px">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class='float-left' style='margin:5px 20px 20px 0'>
+            <div class="custom-control custom-checkbox">
+                {{ form.images_all(class="custom-control-input")}}
+                {{ form.images_all.label(class="custom-control-label") }}
+            </div>
+        </div>    
+        <div class='float-left' style='margin:5px 20px 20px 0'>
+            <div class="custom-control custom-checkbox">
+                {{ form.accurate_calc(class="custom-control-input")}}
+                {{ form.accurate_calc.label(class="custom-control-label") }}
+            </div>
+         </div>   
+         <div class='float-left' style='margin:5px 20px 20px 0'>
+            <div class="custom-control custom-checkbox">
+                {{ form.one_fps(class="custom-control-input")}}
+                {{ form.one_fps.label(class="custom-control-label") }}
+            </div>
+         </div>   
+        <button class="btn btn-info btn-block my-4" type="submit">Пуск</button>
+        <div>
+          <a href="https://www.youtube.com/watch?v=k9q3ZVEH9-k" target="_blank">Пример видео на Youtube</a>
+        </div>
+        <div>
+          <a href="{{url_for('result', path='predict-calc')}}" target="_blank">Пример работы сети по видео на Youtube</a>
+        </div>
+        <div>
+          <a href="{{url_for('static', filename='video/example.mp4')}}" target="_blank">Скачать пример видео</a>
+        </div>
+    </form>
+<!-- Default form login -->
+{% endblock %}
